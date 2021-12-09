@@ -11,6 +11,9 @@ public class JumpProvider : MonoBehaviour
     // private GameObject baseController;
 
     [SerializeField]
+    private GameObject camera;
+
+    [SerializeField]
     private GameObject jumpController;
 
     [SerializeField]
@@ -24,7 +27,9 @@ public class JumpProvider : MonoBehaviour
     private float fastSpeed = 20f;
     private bool moving = false;
     private Vector3 objective = Vector3.zero;
-
+    private float height;
+    private float offsetHeight = 0.1f;
+    private bool pointing = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,6 +42,8 @@ public class JumpProvider : MonoBehaviour
         characterController = gameObject.GetComponent<CharacterController>();
 
         originalSpeed = moveProvider.moveSpeed;
+
+        StartCoroutine(initialization());
     }
 
     void OnDestroy()
@@ -49,25 +56,15 @@ public class JumpProvider : MonoBehaviour
     {
         if (!moving)
         {
-            Debug.Log("Activate");
+            pointing = true;
             interactor.enabled = true;
         }
     }
 
     private void DeactivateJump(InputAction.CallbackContext context)
-    {
-        if (!moving)
-        {
-            interactor.enabled = false;
-            if (interactor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-            {
-                moveProvider.moveSpeed = fastSpeed;
-                objective = hit.point;
-               
-                moving = true;  
-            }
-        }
-            
+    {      
+        pointing = false;
+        interactor.enabled = false;
     }
 
     // Update is called once per frame
@@ -88,6 +85,30 @@ public class JumpProvider : MonoBehaviour
                 characterController.Move(direction.normalized);
             }
         }
+    }
+
+    void Update() {
+        if (camera.transform.position.y - gameObject.transform.position.y >= height+offsetHeight && !moving){
+            interactor.enabled = false;
+            if (interactor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+            {
+                objective = hit.point;
+
+                moveProvider.moveSpeed = (objective - transform.position).magnitude*2f;
+                
+                moving = true;
+            }
+        }
+    }
+
+
+    IEnumerator initialization(){
+        yield return new WaitForSeconds(5f);
+        setHeight();
+    }
+
+    void setHeight(){
+        height = camera.transform.position.y - gameObject.transform.position.y;
     }
 
 }
