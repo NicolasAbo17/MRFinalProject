@@ -1170,6 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901190a99bd291b4d931414a7e52c434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   jumpController: {fileID: 0}
   jumpModeActivate: {fileID: 0}
 --- !u!1 &8787842989691508910
