@@ -495,7 +495,7 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -4084014799535200556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActivateAction:
     m_UseReference: 1
     m_Action:
@@ -1180,7 +1180,7 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -4084014799535200556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ActivateAction:
     m_UseReference: 1
     m_Action:
@@ -1564,6 +1564,7 @@ GameObject:
   - component: {fileID: 8411605670869669385}
   - component: {fileID: 8411605670869669384}
   - component: {fileID: 8798343353350004879}
+  - component: {fileID: 346294436}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1752,8 +1753,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901190a99bd291b4d931414a7e52c434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpController: {fileID: 0}
-  jumpModeActivate: {fileID: -6038369320731503693, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  jumpController: {fileID: 2922694234034547159}
+  jumpModeActivate: {fileID: 8407052940931161378, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &346294436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363990713794450301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74351f7360ca9e6429839167e22ca599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1234451288478235592}
+  height: 0
+  rotateAction: {fileID: -1484732822829357462, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  moveProvider: {fileID: 8411605670869669391}
+  moveReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  actionManager: {fileID: 3783579275875261348}
+  jumpProvider: {fileID: 8798343353350004879}
 --- !u!1 &4894696346048683792
 GameObject:
   m_ObjectHideFlags: 0
