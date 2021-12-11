@@ -39,14 +39,7 @@ public class MovementManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotateAction.action.started += Rotate;
-
-        SelectTypeMovement(Movements.TELEPORT);
-    }
-
-    void OnDestroy()
-    {
-        rotateAction.action.started -= Rotate;
+        SelectTypeMovement(Movements.JUMP);
     }
 
     IEnumerator initialization()
@@ -58,25 +51,6 @@ public class MovementManager : MonoBehaviour
     void setHeight()
     {
         height = playerCamera.transform.position.y - gameObject.transform.position.y;
-    }
-
-    // Update is called once per frame
-    void Rotate(InputAction.CallbackContext context)
-    {
-        Debug.Log("Holi " + rotateNum);
-        rotateNum = (rotateNum + 1) % 3;
-        if (rotateNum == 0)
-        {
-            SelectTypeMovement(Movements.TELEPORT);
-        }
-        if (rotateNum == 1)
-        {
-            SelectTypeMovement(Movements.JUMP);
-        }
-        if (rotateNum == 2)
-        {
-            SelectTypeMovement(Movements.MOVE);
-        }
     }
 
     public void SelectTypeMovement(Movements pMovement)
