@@ -178,6 +178,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Jump Mode Activate",
+                    "type": "Button",
+                    "id": "03e3243f-939a-4ec6-a752-74fc7f619d58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -532,6 +540,28 @@
                     "action": "UI Switcher Button",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0de005c2-e7dd-472e-aa52-8d9bc463a95d",
+                    "path": "<XRController>{LeftHand}/Primary2DAxis",
+                    "interactions": "Sector(directions=1)",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "Jump Mode Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "187d68c1-e9bf-4c24-b919-6f8dc27d3fbd",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Jump Mode Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -656,14 +686,6 @@
                     "type": "Value",
                     "id": "86656199-03b0-4cdf-b711-2e69962719db",
                     "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Jump Mode Activate",
-                    "type": "Button",
-                    "id": "130a5fa4-ebaf-4db7-8339-3cf48ba1d0af",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -996,28 +1018,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Trigger",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "12ffa929-7022-4872-96bc-75aeeff43e02",
-                    "path": "<XRController>{RightHand}/Primary2DAxis",
-                    "interactions": "Sector(directions=1)",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Jump Mode Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f4aa5f9d-47a0-4271-bce6-50a3778a6660",
-                    "path": "<XRController>{RightHand}/secondaryButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Jump Mode Activate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

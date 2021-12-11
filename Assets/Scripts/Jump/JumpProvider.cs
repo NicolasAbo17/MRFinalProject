@@ -11,9 +11,6 @@ public class JumpProvider : MonoBehaviour
     // private GameObject baseController;
 
     [SerializeField]
-    private GameObject camera;
-
-    [SerializeField]
     private GameObject jumpController;
 
     [SerializeField]
@@ -22,17 +19,18 @@ public class JumpProvider : MonoBehaviour
     private XRRayInteractor interactor;
     private ActionBasedContinuousMoveProvider moveProvider;
     private CharacterController characterController;
+    private MovementManager movementManager;
 
     private float originalSpeed = 0f;
-    private float fastSpeed = 20f;
+
     private bool moving = false;
-    private Vector3 objective = Vector3.zero;
-    private float height;
-    private float offsetHeight = 0.1f;
     private bool pointing = false;
 
+    private Vector3 objective = Vector3.zero;
+    private const float offsetHeight = 0.1f; 
+
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         jumpModeActivate.action.started += ActivateJump;
         jumpModeActivate.action.canceled += DeactivateJump;
@@ -40,10 +38,9 @@ public class JumpProvider : MonoBehaviour
         interactor = jumpController.GetComponent<XRRayInteractor>();
         moveProvider = gameObject.GetComponent<ActionBasedContinuousMoveProvider>();
         characterController = gameObject.GetComponent<CharacterController>();
+        movementManager = gameObject.GetComponent<MovementManager>();
 
         originalSpeed = moveProvider.moveSpeed;
-
-        StartCoroutine(initialization());
     }
 
     void OnDestroy()
@@ -88,7 +85,9 @@ public class JumpProvider : MonoBehaviour
     }
 
     void Update() {
-        if (camera.transform.position.y - gameObject.transform.position.y >= height+offsetHeight && !moving){
+        if (movementManager.playerCamera.transform.position.y - gameObject.transform.position.y >=
+            movementManager.height + offsetHeight && pointing && !moving){
+            
             interactor.enabled = false;
             if (interactor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
             {
@@ -100,15 +99,4 @@ public class JumpProvider : MonoBehaviour
             }
         }
     }
-
-
-    IEnumerator initialization(){
-        yield return new WaitForSeconds(5f);
-        setHeight();
-    }
-
-    void setHeight(){
-        height = camera.transform.position.y - gameObject.transform.position.y;
-    }
-
 }
