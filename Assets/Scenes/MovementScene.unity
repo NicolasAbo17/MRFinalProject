@@ -3251,7 +3251,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8411605670869669384, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
   m_PrefabInstance: {fileID: 5636819518616100862}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 346294434}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
@@ -3264,6 +3264,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1501520451038942009, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: m_SelectAction.m_Reference
+      value: 
+      objectReference: {fileID: -4084014799535200556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 1657439476017786737, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: m_Name
+      value: LeftHand Base Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 4894696346048683792, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
       propertyPath: m_Name
       value: XR Player
@@ -3274,15 +3282,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5077472496214236749, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.8000927
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5077472496214236749, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0338612
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5077472496214236749, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.45836
+      value: 11.62
       objectReference: {fileID: 0}
     - target: {fileID: 5077472496214236749, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3312,10 +3320,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8411605670869669390, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: m_RightHandTurnAction.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8411605670869669391, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: m_LeftHandMoveAction.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8798343353350004879, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
-      propertyPath: camera
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798343353350004879, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: playerCamera
       value: 
       objectReference: {fileID: 5636819518616100863}
+    - target: {fileID: 8798343353350004879, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: jumpController
+      value: 
+      objectReference: {fileID: 1856658747}
+    - target: {fileID: 8798343353350004879, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: jumpModeActivate
+      value: 
+      objectReference: {fileID: 8407052940931161378, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 8943958449666903915, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153224495254797967, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
+      propertyPath: m_SelectAction.m_Reference
+      value: 
+      objectReference: {fileID: -4084014799535200556, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d79c4b01916dcc4fb68c7cd68873d97, type: 3}
 --- !u!1 &5636819518616100863 stripped
