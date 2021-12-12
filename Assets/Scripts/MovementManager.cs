@@ -7,12 +7,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class MovementManager : MonoBehaviour
 {
     public GameObject playerCamera;
-    [HideInInspector]
-    public float height;
-
     [SerializeField]
-    private InputActionReference rotateAction;
-    private int rotateNum = 0;
+    private TxtBtn heightBtn;
+    [SerializeField]
+    private TxtBtn movementBtn;
 
     [SerializeField]
     private ActionBasedContinuousMoveProvider moveProvider;
@@ -21,9 +19,13 @@ public class MovementManager : MonoBehaviour
 
     [SerializeField]
     private ActionBasedControllerManager actionManager;
+    [SerializeField]
+    private GameObject teleportController;
 
     [SerializeField]
     private JumpProvider jumpProvider;
+    [SerializeField]
+    private GameObject jumpController;
 
     public enum Movements{
         TELEPORT = 0,
@@ -33,24 +35,29 @@ public class MovementManager : MonoBehaviour
 
     void Awake()
     {
-        StartCoroutine(initialization());
+        StartCoroutine(Initialization());
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        SelectTypeMovement(Movements.JUMP);
+        SelectTypeMovement(GameSingleton.Instance.movement);
     }
 
-    IEnumerator initialization()
+    IEnumerator Initialization()
     {
-        yield return new WaitForSeconds(3f);
-        setHeight();
+        if(GameSingleton.Instance.height == 0){
+            yield return new WaitForSeconds(3f);
+            SetHeight();
+        }else{
+            heightBtn.SetTxt("Height: " + GameSingleton.Instance.height.ToString("#.00") + " cm");
+        }
     }
 
-    void setHeight()
+    public void SetHeight()
     {
-        height = playerCamera.transform.position.y - gameObject.transform.position.y;
+        GameSingleton.Instance.height = playerCamera.transform.position.y - gameObject.transform.position.y;
+        heightBtn.SetTxt("Height: " + GameSingleton.Instance.height.ToString("#.00") + " cm");
     }
 
     public void SelectTypeMovement(Movements pMovement)
@@ -58,16 +65,31 @@ public class MovementManager : MonoBehaviour
         SelectTeleport(pMovement == Movements.TELEPORT);
         SelectJump(pMovement == Movements.JUMP);
         SelectMove(pMovement == Movements.MOVE);
-    }
 
-    private void SelectTeleport(bool pSelected)
-    {
-        actionManager.enabled = pSelected;
+        switch (GameSingleton.Instance.movement)
+        {
+            case Movements.TELEPORT:
+                movementBtn.SetTxt("Teleport");
+                break;
+            case Movements.JUMP:
+                movementBtn.SetTxt("Jump");
+                break;
+            case Movements.MOVE:
+                movementBtn.SetTxt("Move");
+                break;
+        }
     }
 
     private void SelectJump(bool pSelected)
     {
         jumpProvider.enabled = pSelected;
+        jumpController.SetActive(pSelected);
+    }
+
+    private void SelectTeleport(bool pSelected)
+    {
+        actionManager.enabled = pSelected;
+        teleportController.SetActive(pSelected);
     }
 
     private void SelectMove(bool pSelected)
@@ -80,5 +102,10 @@ public class MovementManager : MonoBehaviour
         {
             moveProvider.leftHandMoveAction = new InputActionProperty();
         }
+    }
+
+    public void NextMovement(){
+        GameSingleton.Instance.movement = (Movements)(((int)GameSingleton.Instance.movement + 1)%3);
+        SelectTypeMovement(GameSingleton.Instance.movement);
     }
 }

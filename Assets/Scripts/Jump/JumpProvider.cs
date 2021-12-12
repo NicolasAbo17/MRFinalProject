@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
-
 
 public class JumpProvider : MonoBehaviour
 {
@@ -36,6 +33,7 @@ public class JumpProvider : MonoBehaviour
         jumpModeActivate.action.canceled += DeactivateJump;
 
         interactor = jumpController.GetComponent<XRRayInteractor>();
+        
         moveProvider = gameObject.GetComponent<ActionBasedContinuousMoveProvider>();
         characterController = gameObject.GetComponent<CharacterController>();
         movementManager = gameObject.GetComponent<MovementManager>();
@@ -85,9 +83,9 @@ public class JumpProvider : MonoBehaviour
     }
 
     void Update() {
-        if (movementManager.playerCamera.transform.position.y - gameObject.transform.position.y >=
-            movementManager.height + offsetHeight && pointing && !moving){
-            
+        if (pointing && !moving &&
+        movementManager.playerCamera.transform.position.y - gameObject.transform.position.y >= 
+        GameSingleton.Instance.height + offsetHeight){
             interactor.enabled = false;
             if (interactor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
             {
